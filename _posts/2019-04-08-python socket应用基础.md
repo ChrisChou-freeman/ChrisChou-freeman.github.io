@@ -24,7 +24,7 @@ Socket是一个针对TCP和UDP编程的接口，你可以借助它建立TCP连�
 
 TCP连接的三次握手图示：
 
-![](https://images2015.cnblogs.com/blog/425762/201512/425762-20151212160019653-1079393936.png)
+![](https://github.com/chrischou2018/chrischou2018.github.io/img/post-bg-socket.png)
 
 **什么是****TCP****连接的三次握手？**
 
