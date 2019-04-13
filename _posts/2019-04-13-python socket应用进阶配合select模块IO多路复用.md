@@ -317,3 +317,113 @@ while True:
             sk.send(msg.encode("utf-8"))
 sk.close()
 ```
+
+## 实现socket异步聊天客户端和服务端
+
+**server：**
+
+```python
+# Tcp Chat server
+ 
+import socket, select
+ 
+def broadcast_data (sock, message):
+    # 用于发送消息的函数
+    message = message.encode("utf-8")
+    for socket in CONNECTION_LIST:
+        if socket != server_socket and socket != sock :
+            try :
+                socket.send(message)
+            except :
+                # 如果出现错误则断开连接并从连接池中删除
+                socket.close()
+                CONNECTION_LIST.remove(socket)
+ 
+if __name__ == "__main__":
+    CONNECTION_LIST = []
+    RECV_BUFFER = 4096
+    PORT = 8002
+    HOST = '127.0.0.1'
+     
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.bind((HOST, PORT))
+    server_socket.listen(10)
+    CONNECTION_LIST.append(server_socket)
+ 
+    print("Chat server started on port " + str(PORT))
+ 
+    while True:
+        read_sockets, write_sockets, error_sockets = select.select(CONNECTION_LIST, [], [])
+        for sock in read_sockets:
+            #New connection
+            if sock == server_socket:
+                sockfd, addr = server_socket.accept()
+                CONNECTION_LIST.append(sockfd)
+                print("Client (%s, %s) connected" % addr)
+                broadcast_data(sockfd, "[%s:%s] entered room\n" % addr)
+             
+            else:
+                try:
+                    data = sock.recv(RECV_BUFFER)
+                    data = data.decode("utf-8")
+                    if data:
+                        broadcast_data(sock, "\r" + '<' + str(sock.getpeername()) + '> ' + data)                
+                 
+                except:
+                    broadcast_data(sock, "Client (%s, %s) is offline" % addr)
+                    print("Client (%s, %s) is offline" % addr)
+                    sock.close()
+                    CONNECTION_LIST.remove(sock)
+                    continue
+     
+    server_socket.close()
+```
+
+**client：**
+
+```python
+# Tcp Chat Client
+
+import socket, select, string, sys
+ 
+def prompt() :
+    print('<You>', end="")
+    sys.stdout.flush()
+ 
+if __name__ == "__main__":
+     
+    host = '127.0.0.1'
+    port = 8002
+     
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(2)
+     
+    try :
+        s.connect((host, port))
+    except Exception as e:
+        print('Unable to connect:', e)
+        sys.exit()
+     
+    print('Connected to remote host. Start sending messages')
+    prompt()
+    rlist = [sys.stdin, s]
+    while True:
+        read_list, write_list, error_list = select.select(rlist , [], [])
+         
+        for sock in read_list:
+            if sock == s:
+                data = sock.recv(4096)
+                if not data :
+                    print('\nDisconnected from chat server')
+                    sys.exit()
+                else :
+                    print(data.decode("utf-8"), end="")
+                    prompt()
+             
+            else :
+                msg = sys.stdin.readline()
+                msg = msg.encode("utf-8")
+                s.send(msg)
+                prompt()
+```
