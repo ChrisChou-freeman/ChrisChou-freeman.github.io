@@ -61,7 +61,7 @@ sessions            = peewee.CharField(db_column="sessions")
         )
 ```
 
-然后我们可以对tornado的 RequestHandler的get\_current\_user进行重写（这是tornado预留的钩子函数，用户用户认证，详细可以看官方文档）
+然后我们可以对tornado的 RequestHandler的get\_current\_user进行重写（这是tornado用于用户认证预留的钩子函数，详细可以看官方文档）
 
 ```python
     def get_current_user(self):
