@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
 下图就是测试结果
 
-![测试结果一](/images/python/gil/test_result.jpg)
+![测试结果一](/img/python/test_result.jpg)
 
 可以看到python在多线程的情况下居然比单线程整整慢了45%。按照之前的分析，即使是有GIL全局锁的存在，串行化的多线程也应该和单线程有一样的效率才对。那么怎么会有这么糟糕的结果呢？
 
