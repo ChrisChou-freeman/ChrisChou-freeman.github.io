@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      关于python的GIL（global interpreter lock）到底是什么
-subtitle:   随笔
+subtitle:   python GIL
 date:       2019-11-16
 author:     ChrisChou
 header-img: img/post-bg-coffee.jpeg
@@ -153,11 +153,11 @@ PS：当然这种实现方式是原始而丑陋的，Python的每个版本中也
 [关于GIL影响的扩展阅读](http://www.dabeaz.com/GIL/)
 
 为了直观的理解GIL对于多线程带来的性能影响，这里直接借用的一张测试结果图（见下图）。图中表示的是两个线程在双核CPU上得执行情况。两个线程均为CPU密集型运算线程。绿色部分表示该线程在运行，且在执行有用的计算，红色部分为线程被调度唤醒，但是无法获取GIL导致无法进行有效运算等待的时间。
-![GIL Performance](http://www.dabeaz.com/images/GIL_2cpu.png)
+![GIL Performance](/img/python/GIL_2cpu.png)
 由图可见，GIL的存在导致多线程无法很好的立即多核CPU的并发处理能力。
 
 那么Python的IO密集型线程能否从多线程中受益呢？我们来看下面这张测试结果。颜色代表的含义和上图一致。白色部分表示IO线程处于等待。可见，当IO线程收到数据包引起终端切换后，仍然由于一个CPU密集型线程的存在，导致无法获取GIL锁，从而进行无尽的循环等待。
-![GIL IO Performance](http://www.dabeaz.com/images/GIL_ioclose.png)
+![GIL IO Performance](/img/python/GIL_ioclose.png)
 
 简单的总结下就是：Python的多线程在多核CPU上，只对于IO密集型计算产生正面效果；而当有至少有一个CPU密集型线程存在，那么多线程效率会由于GIL而大幅下降。
 
