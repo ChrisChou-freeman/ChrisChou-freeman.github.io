@@ -23,7 +23,7 @@ tags:
 
 ```python
 FIXTURE_DIRS = (
-   os.path.join(BASE_DIR, 'your_app/fixtures/'),
+   os.path.join(BASE_DIR, 'appname/fixtures/'),
 )
 ```
 
@@ -31,7 +31,7 @@ FIXTURE_DIRS = (
 
 设置好路径之后我们再执行下面的命令将app/models中对应的数据导入到相应的路径下面
 
-python manage.py dumpdata --format=json item > your_app/fixtures/data.json
+python manage.py dumpdata --format=json appname > appname/fixtures/data.json
 
 我们来看下这个命令，dumpdata是Django manage自带的命令， --format=json 是定义数据导出到文件的格式为json数据形式，>后面的是导入的路径以及保存的文件名.
 
@@ -40,15 +40,15 @@ python manage.py dumpdata --format=json item > your_app/fixtures/data.json
 其保存的数据格式是这样的
 
 ```json
-[{"model": "item.brands", "pk": 204, "fields": {"cn_name": "\u6d77\u5916\u8d2d\u54c1\u724c", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 205, "fields": {"cn_name": "\u67cf\u7433", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 206, "fields": {"cn_name": "\u4f18\u8d1d\u65bd", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 207, "fields": {"cn_name": "\u4e1d\u5854\u8299", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 208, "fields": {"cn_name": "\u4e49\u4e4c\u91c7\u8d2d", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 209, "fields": {"cn_name": "2080", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 210, "fields": {"cn_name": "\u6fb3\u6d322N", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 211, "fields": {"cn_name": "3CE", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 212, "fields": {"cn_name": "\u82f1\u56fdAA\u7f51", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 213, "fields": {"cn_name": "\u96c5\u6f3e", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 214, "fields": {"cn_name": "BASS", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 215, "fields": {"cn_name": "\u8d1d\u89c8\u5f97", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 216, "fields": {"cn_name": "MICCOSMO", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 217, "fields": {"cn_name": "cure\u9177\u96c5", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 218, "fields": {"cn_name": "\u7a00\u62c9\u514b\u513f", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 219, "fields": {"cn_name": "\u8fea\u51ef\u745e", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 220, "fields": {"cn_name": "Dr.Cox\u8fea\u67ef\u601d", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", ........
+[{"model": "item.brands", "pk": 204, "fields": {"cn_name": "\u6d77\u5916\u8d2d\u54c1\u724c", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 205, "fields": {"cn_name": "\u67cf\u7433", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 206, "fields": {"cn_name": "\u4f18\u8d1d\u65bd", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 207, "fields": {"cn_name": "\u4e1d\u5854\u8299", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 208, "fields": {"cn_name": "\u4e49\u4e4c\u91c7\u8d2d", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 209, "fields": {"cn_name": "2080", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}, {"model": "item.brands", "pk": 210, "fields": {"cn_name": "\u6fb3\u6d322N", "cn_name_abridge": null, "en_name": null, "form_country": null, "key_word": null, "brand_about": null, "photo_id": null, "status": "normal"}}]
 ```
 
-全是json数据格式，这些都是你数据库中的数据。你成功的将它们导出。
+全是json数据格式，这些都是你数据库中的数据。你成功的将它们导出来了。
 
-那么我们如何将它们再导入的数据中呢？
+那么如何将它们再导入的数据中呢？
 
-首先我们执行python manage.py flush命令将Django models对应的数据库中的数据全部清空。
+首先执行python manage.py flush命令将Django models对应的数据库中的数据全部清空。
 
 再执行python manage.py loaddata data.json命令，这个时候Django就会遍历你settings中设置的FIXTURE_DIRS路径下面找到对应的data.json的文件将其导入到对应的models下面。
 
-没错就是这样简单，你可能还不太理解，但是我建议你亲自试一试，才知道其便利之处。。
+没错就是这样简单。
