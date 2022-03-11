@@ -7,7 +7,7 @@ description: "Every failure is leading towards success."
 keyword: "ChrisChou, ChrisChou Blog, ChrisChou的博客, Python BLog"
 url: "https://chrischou-freeman.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/ChrisChou2018/ChrisChou2018.github.io.git" # you code repository
+github_repo: "https://github.com/ChrisChou-freeman/ChrisChou-freeman.github.io " # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -20,7 +20,7 @@ sidebar-avatar: /img/avatar001.jpg      # use absolute URL, seeing it's used in 
 RSS: true
 # weibo_username:     qiubaiying
 # zhihu_username:     qiubaiying
-github_username:    ChrisChou2018
+github_username:    ChrisChou-freeman
 # facebook_username:  baiying.qiu.7
 # jianshu_username:   e71990ada2fd
 #twitter_username:   qiubaiying
