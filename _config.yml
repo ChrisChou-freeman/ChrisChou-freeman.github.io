@@ -64,9 +64,9 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 90010461b141cc2630a6                            #生成的clientID
   clientSecret: 730c75f22497260d5f054542fdedb10c3fe8caaf    #生成的clientSecret
-  repo: ChrisChou2018.github.io    #仓库名称
-  owner: ChrisChou2018    #github用户名
-  admin: ChrisChou2018
+  repo: https://github.com/ChrisChou-freeman/ChrisChou-freeman.github.io    #仓库名称
+  owner: ChrisChou-freeman    #github用户名
+  admin: ChrisChou-freeman
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
